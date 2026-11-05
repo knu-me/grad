@@ -1,0 +1,203 @@
+<title>로봇특성화대학원 모집 카드</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;500;700;900&display=swap">
+<style>
+  /* 레이아웃: 한 화면 = 카드 한 장. 가로 스크롤 스냅으로 넘기고, 하단 점으로 위치를 보인다. 포스터와 같은 검정 + 크림슨 한 색. */
+  :root {
+    --bg: #0a0a0c; --panel: #16161b; --panel2: #1f1f26; --fg: #ffffff; --muted: #a3a3ac; --dim: #6b6b75;
+    --accent: #b00026; --tag: #f2c94c;
+    --display: "Noto Sans KR", "Malgun Gothic", "Apple SD Gothic Neo", sans-serif;
+    --body: "Noto Sans KR", "Malgun Gothic", "Apple SD Gothic Neo", sans-serif;
+    color-scheme: dark;
+  }
+  html, body { height: 100%; }
+  body { margin: 0; background: var(--bg); color: var(--fg); font-family: var(--body); line-height: 1.5; -webkit-font-smoothing: antialiased; overflow: hidden; }
+  .app { height: 100%; display: flex; flex-direction: column; }
+  .bar { flex: 0 0 auto; display: flex; align-items: center; justify-content: space-between; gap: 12px;
+    padding-block: 10px; padding-left: max(16px, env(safe-area-inset-left, 0px)); padding-right: max(16px, env(safe-area-inset-right, 0px));
+    font-size: 12px; color: var(--muted); }
+  .bar b { color: var(--fg); font-weight: 700; }
+  .draft { color: var(--tag); font-size: 11px; letter-spacing: .04em; }
+  .track { flex: 1 1 auto; min-height: 0; display: flex; overflow-x: auto; overflow-y: hidden; scroll-snap-type: x mandatory; scrollbar-width: none; -webkit-overflow-scrolling: touch; }
+  .track::-webkit-scrollbar { display: none; }
+  .card { flex: 0 0 100%; min-width: 0; height: 100%; scroll-snap-align: start; scroll-snap-stop: always; overflow-y: auto; box-sizing: border-box;
+    padding-block: 12px 24px; padding-left: max(16px, env(safe-area-inset-left, 0px)); padding-right: max(16px, env(safe-area-inset-right, 0px)); }
+  .inner { max-width: 440px; margin: 0 auto; display: flex; flex-direction: column; gap: 14px; min-height: 100%; }
+  .eyebrow { font-size: 11px; font-weight: 700; letter-spacing: .12em; color: var(--accent); text-transform: uppercase; }
+  h1, h2 { font-family: var(--display); margin: 0; text-wrap: balance; line-height: 1.15; }
+  h1 { font-size: clamp(40px, 11vw, 52px); font-weight: 900; }
+  h2 { font-size: clamp(28px, 8vw, 36px); font-weight: 900; }
+  .sub { color: var(--muted); font-size: 13px; }
+  .img { position: relative; aspect-ratio: 4 / 3; max-width: 100%; border-radius: 10px; background: var(--panel); border: 1px dashed var(--dim); display: grid; place-items: center; color: var(--dim); font-size: 12px; text-align: center; }
+  .img.tall { aspect-ratio: 3 / 4; }
+  .big { font-size: 26px; font-weight: 900; }
+  .tiles { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
+  .tile { background: var(--panel); border-radius: 10px; padding: 12px 14px; }
+  .tile .k { font-size: 12px; color: var(--muted); }
+  .tile .v { font-size: 22px; font-weight: 900; margin-top: 2px; }
+  .tile .n { font-size: 11px; color: var(--dim); margin-top: 6px; }
+  .list { display: flex; flex-direction: column; gap: 10px; margin: 0; padding: 0; list-style: none; }
+  .list li { display: flex; align-items: center; gap: 12px; font-size: 16px; }
+  .plus { flex: 0 0 28px; width: 28px; height: 28px; border-radius: 50%; background: var(--accent); display: grid; place-items: center; font-weight: 900; }
+  .dot { flex: 0 0 8px; width: 8px; height: 8px; border-radius: 50%; background: var(--accent); }
+  .chk::after { content: "확인"; margin-left: auto; font-size: 10px; font-weight: 700; color: var(--bg); background: var(--tag); border-radius: 999px; padding: 2px 8px; }
+  .modules { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 8px; }
+  .mod { background: var(--panel); border-radius: 10px; padding: 14px 6px; text-align: center; font-weight: 700; font-size: 15px; }
+  .mod.hot { background: var(--accent); }
+  .inds { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; }
+  .ind { background: var(--panel); border-radius: 10px; padding: 10px 12px; display: flex; gap: 10px; align-items: center; min-width: 0; }
+  .ind .n { font-size: 26px; font-weight: 900; color: var(--accent); font-variant-numeric: tabular-nums; line-height: 1; }
+  .ind .n small { display: block; font-size: 10px; color: var(--dim); font-weight: 400; }
+  .ind .t { font-size: 13px; line-height: 1.3; }
+  .box { background: var(--panel2); border-radius: 10px; padding: 12px 14px; }
+  .box .k { font-size: 12px; color: var(--accent); font-weight: 700; }
+  .box .v { font-size: 15px; font-weight: 700; margin-top: 4px; }
+  .date { background: var(--accent); border-radius: 10px; padding: 14px 16px; }
+  .date .k { font-size: 12px; }
+  .date .v { font-size: 24px; font-weight: 900; font-variant-numeric: tabular-nums; }
+  .date.soft { background: var(--panel); }
+  .date.soft .k { color: var(--muted); }
+  .steps { display: flex; flex-direction: column; gap: 10px; margin: 0; padding: 0; list-style: none; counter-reset: s; }
+  .steps li { display: flex; gap: 12px; align-items: flex-start; font-size: 15px; counter-increment: s; }
+  .steps li::before { content: counter(s); flex: 0 0 28px; width: 28px; height: 28px; border-radius: 50%; border: 1.5px solid var(--accent); display: grid; place-items: center; font-weight: 700; font-size: 13px; }
+  .steps a, .contact a { color: var(--fg); }
+  .contact { font-size: 14px; line-height: 1.7; }
+  .contact .k { color: var(--accent); font-weight: 700; font-size: 12px; }
+  .fine { font-size: 11px; color: var(--dim); margin-top: auto; }
+  .nav { flex: 0 0 auto; display: flex; align-items: center; justify-content: center; gap: 14px;
+    padding-block: 10px; padding-left: max(16px, env(safe-area-inset-left, 0px)); padding-right: max(16px, env(safe-area-inset-right, 0px)); }
+  .dots { display: flex; gap: 8px; }
+  .dots button { width: 8px; height: 8px; border-radius: 50%; border: 0; padding: 0; background: var(--dim); cursor: pointer; }
+  .dots button[aria-current="true"] { background: var(--fg); width: 22px; border-radius: 4px; }
+  .dots button:focus-visible, .arrow:focus-visible { outline: 2px solid var(--tag); outline-offset: 2px; }
+  .arrow { background: var(--panel); color: var(--fg); border: 0; border-radius: 999px; width: 40px; height: 40px; font-size: 18px; cursor: pointer; }
+  .hint { font-size: 11px; color: var(--dim); }
+  @media (prefers-reduced-motion: no-preference) { .track { scroll-behavior: smooth; } }
+</style>
+
+<div class="app">
+  <div class="bar">
+    <div><b>경북대학교 로봇특성화대학원</b> · 2027학년도 1학기 신입생 모집</div>
+    <div class="draft">초안 · 노란 표시는 확정 전</div>
+  </div>
+
+  <div class="track" id="track" tabindex="0" aria-label="모집 안내 카드, 좌우로 넘겨 보세요">
+
+    <section class="card" aria-label="1. 소개">
+      <div class="inner">
+        <div class="eyebrow">첨단산업특성화대학원(로봇 분야) 선정 · 기계로봇공학과</div>
+        <h1>로봇을<br>만드는 대학원</h1>
+        <div class="img tall">이미지 #1<br>휴머노이드 로봇 (프롬프트 1)</div>
+        <div class="big">2027학년도 1학기 신입생 모집 <span class="chk" style="display:inline-flex"></span></div>
+        <div>기계 · 전자 · 제어 · 컴퓨터 · AI · 소프트웨어<br><b>전공 모두 지원 가능</b></div>
+        <div class="fine">구 기계공학과. 경북대학교 일반대학원 모집요강 기준</div>
+      </div>
+    </section>
+
+    <section class="card" aria-label="2. 장학">
+      <div class="inner">
+        <div class="eyebrow">Scholarship · 장학</div>
+        <h2>입학생 전원 장학생</h2>
+        <div class="tiles">
+          <div class="tile"><div class="k">석사과정</div><div class="v">월 190만원 ↑</div><div class="n">기본 지급</div></div>
+          <div class="tile"><div class="k">박사과정</div><div class="v">월 210만원 ↑</div><div class="n">기본 지급</div></div>
+        </div>
+        <div class="eyebrow" style="text-transform:none;letter-spacing:0">여기에 더해집니다</div>
+        <ul class="list">
+          <li><span class="plus">+</span>지도교수 연구과제 인건비</li>
+          <li class="chk"><span class="plus">+</span>박사과정 등록금 전액 지원</li>
+          <li class="chk"><span class="plus">+</span>자대 학부 → 석사 진학 시 첫 학기 등록금 면제</li>
+          <li class="chk"><span class="plus">+</span>RISE 사업 지원</li>
+        </ul>
+        <div class="fine">항목별 조건은 모집요강과 학과 안내를 따릅니다. 중복 수혜 규칙은 확정 전이라 합산 금액은 적지 않습니다.</div>
+      </div>
+    </section>
+
+    <section class="card" aria-label="3. 교육">
+      <div class="inner">
+        <div class="eyebrow">Curriculum · 교육</div>
+        <h2>로봇 HW부터 SW까지<br>만들면서 배운다</h2>
+        <div class="img">이미지 #2<br>로봇 팔·센서를 다루는 대학원생 (프롬프트 2)</div>
+        <div class="modules"><div class="mod">기초 모듈</div><div class="mod">심화 모듈</div><div class="mod hot">특화 모듈</div></div>
+        <ul class="list">
+          <li><span class="dot"></span>재학 중 산학프로젝트 1개 이상, 기업 멘토와 함께</li>
+          <li class="chk"><span class="dot"></span>휴머노이드 · 협동로봇 등 실습 장비</li>
+          <li><span class="dot"></span>해외 학회 · 해외 협력기관 파견 지원</li>
+        </ul>
+      </div>
+    </section>
+
+    <section class="card" aria-label="4. 진로">
+      <div class="inner">
+        <div class="eyebrow">Industry · 진로</div>
+        <h2>산학 컨소시엄<br><span style="color:var(--accent)">25개사</span>와 함께</h2>
+        <div class="sub">대기업 3 · 중견기업 5 · 중소기업 17 &nbsp;|&nbsp; 대구·경북 22개사</div>
+        <div class="inds">
+          <div class="ind"><div class="n">6<small>개사</small></div><div class="t">산업용 로봇 · 자동화 시스템 · 물류로봇</div></div>
+          <div class="ind"><div class="n">5<small>개사</small></div><div class="t">로봇 핵심부품 · 구동 · 제어</div></div>
+          <div class="ind"><div class="n">5<small>개사</small></div><div class="t">제조 장비 · 공정 자동화</div></div>
+          <div class="ind"><div class="n">3<small>개사</small></div><div class="t">자동차부품 · 전동화 · 농기계</div></div>
+          <div class="ind"><div class="n">3<small>개사</small></div><div class="t">의료 · 재활 · 웨어러블 로봇</div></div>
+          <div class="ind"><div class="n">3<small>개사</small></div><div class="t">항공우주 · 드론</div></div>
+        </div>
+        <div class="box"><div class="k">졸업까지 이어지는 연결</div><div class="v">산학장학생 · 인턴십 · 현장실습 · 채용설명회 · 1:1 진로상담</div></div>
+        <div class="fine">기업 로고 게시 여부는 각 기업 동의 후 결정</div>
+      </div>
+    </section>
+
+    <section class="card" aria-label="5. 일정과 문의">
+      <div class="inner">
+        <div class="eyebrow">Apply · 일정</div>
+        <h2>지원 일정</h2>
+        <div class="date"><div class="k">2차 모집</div><div class="v">2026. 11. 13 (금) – 11. 20 (금)</div></div>
+        <div class="date soft"><div class="k">추가 모집</div><div class="v">2027. 1월 중 (예정)</div></div>
+        <div class="eyebrow" style="text-transform:none;letter-spacing:0">지원 전에</div>
+        <ol class="steps">
+          <li>기계공학부 홈페이지에서 교수진 연구 분야 확인 &nbsp;<a href="https://me.knu.ac.kr" target="_blank" rel="noopener">me.knu.ac.kr</a></li>
+          <li>관심 있는 교수님께 이메일로 연락</li>
+          <li>경북대학교 일반대학원 모집요강에 따라 원서 접수</li>
+        </ol>
+        <div class="box contact">
+          <div class="k">문의 <span class="chk" style="display:inline-flex;margin-left:6px"></span></div>
+          전화 [학과 사무실 전화]<br>이메일 [학과 이메일]<br>홈페이지 <a href="https://me.knu.ac.kr" target="_blank" rel="noopener">me.knu.ac.kr</a>
+        </div>
+      </div>
+    </section>
+
+  </div>
+
+  <div class="nav">
+    <button class="arrow" id="prev" aria-label="이전 카드">‹</button>
+    <div class="dots" id="dots" role="tablist"></div>
+    <button class="arrow" id="next" aria-label="다음 카드">›</button>
+  </div>
+</div>
+
+<script>
+(function () {
+  var track = document.getElementById("track");
+  var cards = Array.prototype.slice.call(track.querySelectorAll(".card"));
+  var dots = document.getElementById("dots");
+  cards.forEach(function (c, i) {
+    var b = document.createElement("button");
+    b.type = "button"; b.setAttribute("role", "tab"); b.setAttribute("aria-label", (i + 1) + "번째 카드");
+    b.addEventListener("click", function () { go(i); });
+    dots.appendChild(b);
+  });
+  function current() { return Math.round(track.scrollLeft / track.clientWidth); }
+  function go(i) { i = Math.max(0, Math.min(cards.length - 1, i)); track.scrollTo({ left: i * track.clientWidth }); }
+  function paint() {
+    var i = current();
+    Array.prototype.forEach.call(dots.children, function (d, j) { d.setAttribute("aria-current", j === i ? "true" : "false"); });
+  }
+  document.getElementById("prev").addEventListener("click", function () { go(current() - 1); });
+  document.getElementById("next").addEventListener("click", function () { go(current() + 1); });
+  track.addEventListener("scroll", function () { window.requestAnimationFrame(paint); });
+  track.addEventListener("keydown", function (e) {
+    if (e.key === "ArrowRight") { go(current() + 1); e.preventDefault(); }
+    if (e.key === "ArrowLeft") { go(current() - 1); e.preventDefault(); }
+  });
+  window.addEventListener("resize", function () { go(current()); });
+  paint();
+})();
+</script>
