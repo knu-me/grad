@@ -20,7 +20,8 @@
   * { box-sizing: border-box; }
   html, body { height: 100%; margin: 0; }
   body { background: var(--bg); color: var(--fg); font-family: var(--font); line-height: 1.45; -webkit-font-smoothing: antialiased;
-    overflow: hidden; overscroll-behavior: none; -webkit-text-size-adjust: 100%; }
+    overflow: hidden; overscroll-behavior: none; -webkit-text-size-adjust: 100%;
+    word-break: keep-all; overflow-wrap: anywhere; }
   .app { height: 100vh; height: 100dvh; display: flex; flex-direction: column; }
   .bar { flex: 0 0 auto; display: flex; align-items: center; justify-content: space-between; gap: 10px; white-space: nowrap; overflow: hidden;
     padding: calc(6px + env(safe-area-inset-top, 0px)) max(14px, env(safe-area-inset-right, 0px)) 6px max(14px, env(safe-area-inset-left, 0px));
@@ -138,7 +139,7 @@
 <body>
 <div class="app">
   <div class="bar">
-    <div><b>경북대학교 로봇특성화대학원</b> · 2027-1 신입생 모집</div>
+    <div><b>경북대학교 로봇특성화대학원</b>&nbsp;· 2027-1 신입생 모집</div>
     <div class="draft">초안</div>
   </div>
 
@@ -146,18 +147,18 @@
 
     <section class="card" aria-label="1. 소개">
       <div class="inner">
-        <div class="eyebrow">첨단산업특성화대학원(로봇 분야) 선정 · 기계로봇공학과</div>
+        <div class="eyebrow">첨단산업특성화대학원(로봇 분야) 선정&nbsp;· 기계로봇공학과</div>
         <h1>로봇을<br>만드는 대학원</h1>
         <div class="img">이미지 #1<br>휴머노이드 로봇 (프롬프트 1)</div>
         <div class="big">2027학년도 1학기 신입생 모집</div>
-        <div class="lead">기계 · 전자 · 제어 · 컴퓨터 · AI · 소프트웨어<br><b>전공 모두 지원 가능</b></div>
+        <div class="lead">기계&nbsp;· 전자&nbsp;· 제어&nbsp;· 컴퓨터&nbsp;· AI&nbsp;· 소프트웨어<br><b>전공 모두 지원 가능</b></div>
         <div class="fine">구 기계공학과. 경북대학교 일반대학원 모집요강 기준</div>
       </div>
     </section>
 
     <section class="card" aria-label="2. 장학">
       <div class="inner">
-        <div class="eyebrow">Scholarship · 장학</div>
+        <div class="eyebrow">Scholarship&nbsp;· 장학</div>
         <h2>입학생 전원 장학생</h2>
         <div class="tiles">
           <div class="tile"><div class="k">석사과정</div><div class="row"><div><div class="v">월 190만원</div><div class="n">기본 지급</div></div><div class="alpha">+α</div></div></div>
@@ -176,39 +177,39 @@
 
     <section class="card" aria-label="3. 교육">
       <div class="inner">
-        <div class="eyebrow">Curriculum · 교육</div>
+        <div class="eyebrow">Curriculum&nbsp;· 교육</div>
         <h2>로봇 HW부터 SW까지<br>만들면서 배운다</h2>
         <div class="img">이미지 #2<br>로봇 팔·센서를 다루는 대학원생 (프롬프트 2)</div>
         <div class="modules"><div class="mod">기초 모듈</div><div class="mod">심화 모듈</div><div class="mod hot">특화 모듈</div></div>
         <ul class="list">
           <li><span class="dot"></span>재학 중 산학프로젝트 1개 이상, 기업 멘토와 함께</li>
-          <li><span class="dot"></span>휴머노이드 · 협동로봇 등 실습 장비</li>
-          <li><span class="dot"></span>해외 학회 · 해외 협력기관 파견 지원</li>
+          <li><span class="dot"></span>휴머노이드&nbsp;· 협동로봇 등 실습 장비</li>
+          <li><span class="dot"></span>해외 학회&nbsp;· 해외 협력기관 파견 지원</li>
         </ul>
       </div>
     </section>
 
     <section class="card" aria-label="4. 진로">
       <div class="inner">
-        <div class="eyebrow">Industry · 진로</div>
+        <div class="eyebrow">Industry&nbsp;· 진로</div>
         <h2>산학 컨소시엄<br><span style="color:var(--accent)">25개사</span>와 함께</h2>
-        <div class="sub">대기업 3 · 중견기업 5 · 중소기업 17 &nbsp;|&nbsp; 대구·경북 22개사</div>
+        <div class="sub">대기업 3&nbsp;· 중견기업 5&nbsp;· 중소기업 17 &nbsp;|&nbsp; 대구·경북 22개사</div>
         <div class="inds">
-          <div class="ind"><div class="n">6<small>개사</small></div><div class="t">산업용 로봇 · 자동화 시스템 · 물류로봇</div></div>
-          <div class="ind"><div class="n">5<small>개사</small></div><div class="t">로봇 핵심부품 · 구동 · 제어</div></div>
-          <div class="ind"><div class="n">5<small>개사</small></div><div class="t">제조 장비 · 공정 자동화</div></div>
-          <div class="ind"><div class="n">3<small>개사</small></div><div class="t">자동차부품 · 전동화 · 농기계</div></div>
-          <div class="ind"><div class="n">3<small>개사</small></div><div class="t">의료 · 재활 · 웨어러블 로봇</div></div>
-          <div class="ind"><div class="n">3<small>개사</small></div><div class="t">항공우주 · 드론</div></div>
+          <div class="ind"><div class="n">6<small>개사</small></div><div class="t">산업용 로봇&nbsp;· 자동화 시스템&nbsp;· 물류로봇</div></div>
+          <div class="ind"><div class="n">5<small>개사</small></div><div class="t">로봇 핵심부품&nbsp;· 구동&nbsp;· 제어</div></div>
+          <div class="ind"><div class="n">5<small>개사</small></div><div class="t">제조 장비&nbsp;· 공정 자동화</div></div>
+          <div class="ind"><div class="n">3<small>개사</small></div><div class="t">자동차부품&nbsp;· 전동화&nbsp;· 농기계</div></div>
+          <div class="ind"><div class="n">3<small>개사</small></div><div class="t">의료&nbsp;· 재활&nbsp;· 웨어러블 로봇</div></div>
+          <div class="ind"><div class="n">3<small>개사</small></div><div class="t">항공우주&nbsp;· 드론</div></div>
         </div>
-        <div class="box"><div class="k">졸업까지 이어지는 연결</div><div class="v">산학장학생 · 인턴십 · 현장실습 · 채용설명회 · 1:1 진로상담</div></div>
+        <div class="box"><div class="k">졸업까지 이어지는 연결</div><div class="v">산학장학생&nbsp;· 인턴십&nbsp;· 현장실습&nbsp;· 채용설명회&nbsp;· 1:1 진로상담</div></div>
         <div class="spacer"></div>
       </div>
     </section>
 
     <section class="card" aria-label="5. 참여 기업">
       <div class="inner">
-        <div class="eyebrow">Consortium · 참여 기업</div>
+        <div class="eyebrow">Consortium&nbsp;· 참여 기업</div>
         <h2>함께하는 25개사</h2>
         <div class="logos">
           <div><img src="logos/C-01.png" alt="HD현대로보틱스"></div>
@@ -243,13 +244,13 @@
 
     <section class="card" aria-label="6. 일정과 문의">
       <div class="inner">
-        <div class="eyebrow">Apply · 일정</div>
+        <div class="eyebrow">Apply&nbsp;· 일정</div>
         <h2>지원 일정</h2>
         <div class="date"><div class="k">2차 모집</div><div class="v">2026. 11. 13 (금) – 11. 20 (금)</div></div>
         <div class="date soft"><div class="k">추가 모집</div><div class="v">2027. 1월 중 (예정)</div></div>
         <div class="eyebrow ko">지원 전에</div>
         <ol class="steps">
-          <li><span>기계공학부 홈페이지에서 교수진 연구 분야 확인 &nbsp;<a href="https://me.knu.ac.kr" target="_blank" rel="noopener">me.knu.ac.kr</a></span></li>
+          <li><span>기계공학부 홈페이지에서 교수진 연구 분야 확인 <a href="https://me.knu.ac.kr" target="_blank" rel="noopener">me.knu.ac.kr</a></span></li>
           <li><span>관심 있는 교수님께 이메일로 연락</span></li>
           <li><span>경북대학교 일반대학원 모집요강에 따라 원서 접수</span></li>
         </ol>
