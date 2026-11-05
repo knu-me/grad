@@ -1,89 +1,145 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="theme-color" content="#0a0a0c">
 <title>로봇특성화대학원 모집 카드</title>
-<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;500;700;900&display=swap">
 <style>
-  /* 레이아웃: 한 화면 = 카드 한 장. 가로 스크롤 스냅으로 넘기고, 하단 점으로 위치를 보인다. 포스터와 같은 검정 + 크림슨 한 색. */
+  /* 레이아웃: 스마트폰 세로 화면 기준. 한 화면 = 카드 한 장, 세로 스크롤 없음. 좌우 스와이프로 넘기고 하단 점으로 위치를 보인다.
+     카드 안 요소는 위에서부터 쌓이고, 그림 자리(.img)와 로고 그리드(.logos)가 남는 높이를 차지해 어떤 화면 높이에도 맞춘다. */
   :root {
     --bg: #0a0a0c; --panel: #16161b; --panel2: #1f1f26; --fg: #ffffff; --muted: #a3a3ac; --dim: #6b6b75;
     --accent: #b00026; --tag: #f2c94c;
-    --display: "Noto Sans KR", "Malgun Gothic", "Apple SD Gothic Neo", sans-serif;
-    --body: "Noto Sans KR", "Malgun Gothic", "Apple SD Gothic Neo", sans-serif;
+    --font: "Noto Sans KR", "Malgun Gothic", "Apple SD Gothic Neo", sans-serif;
+    --gap: 12px;
     color-scheme: dark;
   }
-  html, body { height: 100%; }
-  body { margin: 0; background: var(--bg); color: var(--fg); font-family: var(--body); line-height: 1.5; -webkit-font-smoothing: antialiased; overflow: hidden; }
-  .app { height: 100%; display: flex; flex-direction: column; }
-  .bar { flex: 0 0 auto; display: flex; align-items: center; justify-content: space-between; gap: 12px;
-    padding-block: 10px; padding-left: max(16px, env(safe-area-inset-left, 0px)); padding-right: max(16px, env(safe-area-inset-right, 0px));
+  * { box-sizing: border-box; }
+  html, body { height: 100%; margin: 0; }
+  body { background: var(--bg); color: var(--fg); font-family: var(--font); line-height: 1.45; -webkit-font-smoothing: antialiased;
+    overflow: hidden; overscroll-behavior: none; -webkit-text-size-adjust: 100%; }
+  .app { height: 100vh; height: 100dvh; display: flex; flex-direction: column; }
+  .bar { flex: 0 0 auto; display: flex; align-items: center; justify-content: space-between; gap: 10px; white-space: nowrap; overflow: hidden;
+    padding: calc(6px + env(safe-area-inset-top, 0px)) max(14px, env(safe-area-inset-right, 0px)) 6px max(14px, env(safe-area-inset-left, 0px));
     font-size: 12px; color: var(--muted); }
   .bar b { color: var(--fg); font-weight: 700; }
-  .draft { color: var(--tag); font-size: 11px; letter-spacing: .04em; }
-  .track { flex: 1 1 auto; min-height: 0; display: flex; overflow-x: auto; overflow-y: hidden; scroll-snap-type: x mandatory; scrollbar-width: none; -webkit-overflow-scrolling: touch; }
+  .draft { color: var(--tag); font-size: 11px; letter-spacing: .04em; flex: 0 0 auto; }
+  .track { flex: 1 1 auto; min-height: 0; display: flex; overflow-x: auto; overflow-y: hidden; scroll-snap-type: x mandatory;
+    scrollbar-width: none; -webkit-overflow-scrolling: touch; touch-action: pan-x; }
   .track::-webkit-scrollbar { display: none; }
-  .card { flex: 0 0 100%; min-width: 0; height: 100%; scroll-snap-align: start; scroll-snap-stop: always; overflow-y: auto; box-sizing: border-box;
-    padding-block: 12px 24px; padding-left: max(16px, env(safe-area-inset-left, 0px)); padding-right: max(16px, env(safe-area-inset-right, 0px)); }
-  .inner { max-width: 440px; margin: 0 auto; display: flex; flex-direction: column; gap: 14px; min-height: 100%; }
+  .card { flex: 0 0 100%; min-width: 0; height: 100%; scroll-snap-align: start; scroll-snap-stop: always; overflow: hidden;
+    padding: 8px max(14px, env(safe-area-inset-right, 0px)) 10px max(14px, env(safe-area-inset-left, 0px)); }
+  .inner { max-width: 440px; height: 100%; margin: 0 auto; display: flex; flex-direction: column; gap: var(--gap); }
   .eyebrow { font-size: 11px; font-weight: 700; letter-spacing: .12em; color: var(--accent); text-transform: uppercase; }
-  h1, h2 { font-family: var(--display); margin: 0; text-wrap: balance; line-height: 1.15; }
-  h1 { font-size: clamp(40px, 11vw, 52px); font-weight: 900; }
-  h2 { font-size: clamp(28px, 8vw, 36px); font-weight: 900; }
+  .eyebrow.ko { text-transform: none; letter-spacing: 0; }
+  h1, h2 { margin: 0; text-wrap: balance; line-height: 1.12; font-weight: 900; }
+  h1 { font-size: clamp(34px, 10.5vw, 48px); }
+  h2 { font-size: clamp(24px, 7.2vw, 32px); }
   .sub { color: var(--muted); font-size: 13px; }
-  .img { position: relative; aspect-ratio: 4 / 3; max-width: 100%; border-radius: 10px; background: var(--panel); border: 1px dashed var(--dim); display: grid; place-items: center; color: var(--dim); font-size: 12px; text-align: center; }
-  .img.tall { aspect-ratio: 3 / 4; }
-  .big { font-size: 26px; font-weight: 900; }
-  .tiles { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
-  .tile { background: var(--panel); border-radius: 10px; padding: 12px 14px; }
+  .fine { font-size: 11px; color: var(--dim); }
+  /* 그림 자리: 남는 높이를 모두 차지한다. 실제 그림을 넣으면 object-fit: cover로 채운다 */
+  .img { position: relative; flex: 1 1 0; min-height: 90px; border-radius: 10px; background: var(--panel); border: 1px dashed var(--dim);
+    display: grid; place-items: center; color: var(--dim); font-size: 12px; text-align: center; overflow: hidden; }
+  .img img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; }
+  .big { font-size: clamp(20px, 6vw, 26px); font-weight: 900; line-height: 1.2; }
+  .lead { font-size: 15px; line-height: 1.45; }
+  .tiles { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; }
+  .tile { background: var(--panel); border-radius: 10px; padding: 10px 12px; min-width: 0; }
   .tile .k { font-size: 12px; color: var(--muted); }
-  .tile .v { font-size: 22px; font-weight: 900; margin-top: 2px; line-height: 1.2; }
-  .tile .row { display: flex; align-items: center; gap: 10px; }
-  .tile .n { font-size: 22px; font-weight: 900; line-height: 1.2; }
-  .tile .alpha { font-size: 34px; font-weight: 900; color: var(--accent); line-height: 1; }
-  .list { display: flex; flex-direction: column; gap: 10px; margin: 0; padding: 0; list-style: none; }
-  .list li { display: flex; align-items: center; gap: 12px; font-size: 16px; }
-  .plus { flex: 0 0 28px; width: 28px; height: 28px; border-radius: 50%; background: var(--accent); display: grid; place-items: center; font-weight: 900; }
+  .tile .row { display: flex; align-items: center; gap: 8px; margin-top: 2px; }
+  .tile .v, .tile .n { font-size: clamp(17px, 5.4vw, 22px); font-weight: 900; line-height: 1.2; white-space: nowrap; }
+  .tile .alpha { font-size: clamp(26px, 8.2vw, 34px); font-weight: 900; color: var(--accent); line-height: 1; }
+  .list { display: flex; flex-direction: column; gap: 8px; margin: 0; padding: 0; list-style: none; }
+  .list li { display: flex; align-items: center; gap: 10px; font-size: 15px; line-height: 1.35; }
+  .plus { flex: 0 0 26px; width: 26px; height: 26px; border-radius: 50%; background: var(--accent); display: grid; place-items: center; font-weight: 900; font-size: 15px; }
   .dot { flex: 0 0 8px; width: 8px; height: 8px; border-radius: 50%; background: var(--accent); }
-  .chk::after { content: "확인"; margin-left: auto; font-size: 10px; font-weight: 700; color: var(--bg); background: var(--tag); border-radius: 999px; padding: 2px 8px; }
-  .modules { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 8px; }
-  .mod { background: var(--panel); border-radius: 10px; padding: 14px 6px; text-align: center; font-weight: 700; font-size: 15px; }
+  .modules { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 6px; }
+  .mod { background: var(--panel); border-radius: 10px; padding: 10px 4px; text-align: center; font-weight: 700; font-size: 14px; }
   .mod.hot { background: var(--accent); }
   .inds { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; }
-  .ind { background: var(--panel); border-radius: 10px; padding: 10px 12px; display: flex; gap: 10px; align-items: center; min-width: 0; }
-  .ind .n { font-size: 26px; font-weight: 900; color: var(--accent); font-variant-numeric: tabular-nums; line-height: 1; }
-  .ind .n small { display: block; font-size: 10px; color: var(--dim); font-weight: 400; }
-  .ind .t { font-size: 13px; line-height: 1.3; }
-  .box { background: var(--panel2); border-radius: 10px; padding: 12px 14px; }
+  .ind { background: var(--panel); border-radius: 10px; padding: 8px 10px; display: flex; gap: 8px; align-items: center; min-width: 0; }
+  .ind .n { flex: 0 0 auto; font-size: 24px; font-weight: 900; color: var(--accent); font-variant-numeric: tabular-nums; line-height: 1; text-align: center; }
+  .ind .n small { display: block; font-size: 10px; color: var(--dim); font-weight: 400; white-space: nowrap; margin-top: 2px; }
+  .ind .t { font-size: 12.5px; line-height: 1.3; }
+  .box { background: var(--panel2); border-radius: 10px; padding: 10px 12px; }
   .box .k { font-size: 12px; color: var(--accent); font-weight: 700; }
-  .box .v { font-size: 15px; font-weight: 700; margin-top: 4px; }
-  .date { background: var(--accent); border-radius: 10px; padding: 14px 16px; }
+  .box .v { font-size: 14px; font-weight: 700; margin-top: 3px; line-height: 1.4; }
+  .date { background: var(--accent); border-radius: 10px; padding: 10px 14px; }
   .date .k { font-size: 12px; }
-  .date .v { font-size: 24px; font-weight: 900; font-variant-numeric: tabular-nums; }
+  .date .v { font-size: clamp(18px, 5.6vw, 23px); font-weight: 900; font-variant-numeric: tabular-nums; line-height: 1.25; }
   .date.soft { background: var(--panel); }
   .date.soft .k { color: var(--muted); }
-  .steps { display: flex; flex-direction: column; gap: 10px; margin: 0; padding: 0; list-style: none; counter-reset: s; }
-  .steps li { display: flex; gap: 12px; align-items: flex-start; font-size: 15px; counter-increment: s; }
-  .steps li::before { content: counter(s); flex: 0 0 28px; width: 28px; height: 28px; border-radius: 50%; border: 1.5px solid var(--accent); display: grid; place-items: center; font-weight: 700; font-size: 13px; }
+  .steps { display: flex; flex-direction: column; gap: 8px; margin: 0; padding: 0; list-style: none; counter-reset: s; }
+  .steps li { display: flex; gap: 10px; align-items: flex-start; font-size: 14px; line-height: 1.4; counter-increment: s; }
+  .steps li > span { flex: 1 1 auto; min-width: 0; }
+  .steps li::before { content: counter(s); flex: 0 0 24px; width: 24px; height: 24px; border-radius: 50%; border: 1.5px solid var(--accent); display: grid; place-items: center; font-weight: 700; font-size: 12px; }
   .steps a, .contact a { color: var(--fg); }
-  .contact { font-size: 14px; line-height: 1.7; }
+  .contact { font-size: 14px; line-height: 1.6; }
   .contact .k { color: var(--accent); font-weight: 700; font-size: 12px; }
-  .logos { display: grid; grid-template-columns: repeat(4, 1fr); gap: 6px; }
-  .logos div { background: #fff; border-radius: 6px; aspect-ratio: 5 / 3; display: grid; place-items: center; padding: 6px; min-width: 0; }
-  .logos img { max-width: 100%; max-height: 100%; object-fit: contain; }
-  .fine { font-size: 11px; color: var(--dim); margin-top: auto; }
-  .nav { flex: 0 0 auto; display: flex; align-items: center; justify-content: center; gap: 14px;
-    padding-block: 10px; padding-left: max(16px, env(safe-area-inset-left, 0px)); padding-right: max(16px, env(safe-area-inset-right, 0px)); }
-  .dots { display: flex; gap: 8px; }
+  /* 로고 그리드: 5열, 남는 높이를 행으로 나눠 채운다 */
+  .logos { flex: 1 1 0; min-height: 0; display: grid; grid-template-columns: repeat(5, 1fr); align-content: center; gap: 6px; }
+  .logos div { background: #fff; border-radius: 6px; aspect-ratio: 4 / 3; display: grid; place-items: center; padding: 5px; min-width: 0; min-height: 0; overflow: hidden; }
+  .logos img { max-width: 100%; max-height: 100%; width: auto; height: auto; object-fit: contain; }
+  .spacer { flex: 1 1 0; }
+  .nav { flex: 0 0 auto; display: flex; align-items: center; justify-content: center; gap: 12px;
+    padding: 6px max(14px, env(safe-area-inset-right, 0px)) calc(6px + env(safe-area-inset-bottom, 0px)) max(14px, env(safe-area-inset-left, 0px)); }
+  .dots { display: flex; gap: 7px; }
   .dots button { width: 8px; height: 8px; border-radius: 50%; border: 0; padding: 0; background: var(--dim); cursor: pointer; }
-  .dots button[aria-current="true"] { background: var(--fg); width: 22px; border-radius: 4px; }
+  .dots button[aria-current="true"] { background: var(--fg); width: 20px; border-radius: 4px; }
   .dots button:focus-visible, .arrow:focus-visible { outline: 2px solid var(--tag); outline-offset: 2px; }
-  .arrow { background: var(--panel); color: var(--fg); border: 0; border-radius: 999px; width: 40px; height: 40px; font-size: 18px; cursor: pointer; }
-  .hint { font-size: 11px; color: var(--dim); }
+  .arrow { background: var(--panel); color: var(--fg); border: 0; border-radius: 999px; width: 36px; height: 36px; font-size: 18px; line-height: 1; cursor: pointer; }
+  /* 낮은 화면(구형 폰, 브라우저 UI가 큰 경우): 간격과 글자를 한 단계 줄인다 */
+  @media (max-height: 700px) {
+    :root { --gap: 9px; }
+    h1 { font-size: clamp(30px, 9vw, 40px); }
+    h2 { font-size: clamp(21px, 6.4vw, 27px); }
+    .list li, .lead { font-size: 14px; }
+    .list { gap: 6px; }
+    .steps li { font-size: 13px; }
+    .steps { gap: 6px; }
+    .contact { font-size: 13px; line-height: 1.5; }
+    .tile { padding: 8px 10px; }
+    .ind { padding: 6px 9px; }
+    .ind .n { font-size: 20px; }
+    .ind .t { font-size: 12px; }
+    .box, .date { padding: 8px 12px; }
+    .mod { padding: 8px 4px; font-size: 13px; }
+    .bar { font-size: 11px; padding-top: calc(4px + env(safe-area-inset-top, 0px)); padding-bottom: 4px; }
+    .arrow { width: 32px; height: 32px; }
+  }
+  /* 높은 화면(최근 폰): 간격과 글자를 한 단계 키운다 */
+  @media (min-height: 780px) {
+    :root { --gap: 16px; }
+    .list { gap: 12px; }
+    .list li, .lead { font-size: 16px; }
+    .plus { flex-basis: 28px; width: 28px; height: 28px; }
+    .steps { gap: 12px; }
+    .steps li { font-size: 15px; }
+    .contact { font-size: 15px; line-height: 1.7; }
+    .tile { padding: 12px 14px; }
+    .ind { padding: 11px 12px; }
+    .ind .t { font-size: 13.5px; }
+    .box, .date { padding: 12px 14px; }
+    .box .v { font-size: 15px; }
+    .mod { padding: 12px 4px; font-size: 15px; }
+    .sub { font-size: 14px; }
+    .logos { gap: 8px; }
+  }
+  /* 넓은 화면(PC)에서는 폰 폭으로 가운데 표시 */
+  @media (min-width: 600px) {
+    .app { max-width: 480px; margin: 0 auto; }
+  }
   @media (prefers-reduced-motion: no-preference) { .track { scroll-behavior: smooth; } }
 </style>
-
+</head>
+<body>
 <div class="app">
   <div class="bar">
-    <div><b>경북대학교 로봇특성화대학원</b> · 2027학년도 1학기 신입생 모집</div>
-    <div class="draft">초안 · 노란 표시는 확정 전</div>
+    <div><b>경북대학교 로봇특성화대학원</b> · 2027-1 신입생 모집</div>
+    <div class="draft">초안</div>
   </div>
 
   <div class="track" id="track" tabindex="0" aria-label="모집 안내 카드, 좌우로 넘겨 보세요">
@@ -92,9 +148,9 @@
       <div class="inner">
         <div class="eyebrow">첨단산업특성화대학원(로봇 분야) 선정 · 기계로봇공학과</div>
         <h1>로봇을<br>만드는 대학원</h1>
-        <div class="img tall">이미지 #1<br>휴머노이드 로봇 (프롬프트 1)</div>
-        <div class="big">2027학년도 1학기 신입생 모집 <span class="chk" style="display:inline-flex"></span></div>
-        <div>기계 · 전자 · 제어 · 컴퓨터 · AI · 소프트웨어<br><b>전공 모두 지원 가능</b></div>
+        <div class="img">이미지 #1<br>휴머노이드 로봇 (프롬프트 1)</div>
+        <div class="big">2027학년도 1학기 신입생 모집</div>
+        <div class="lead">기계 · 전자 · 제어 · 컴퓨터 · AI · 소프트웨어<br><b>전공 모두 지원 가능</b></div>
         <div class="fine">구 기계공학과. 경북대학교 일반대학원 모집요강 기준</div>
       </div>
     </section>
@@ -107,14 +163,14 @@
           <div class="tile"><div class="k">석사과정</div><div class="row"><div><div class="v">월 190만원</div><div class="n">기본 지급</div></div><div class="alpha">+α</div></div></div>
           <div class="tile"><div class="k">박사과정</div><div class="row"><div><div class="v">월 210만원</div><div class="n">기본 지급</div></div><div class="alpha">+α</div></div></div>
         </div>
-        <div class="eyebrow" style="text-transform:none;letter-spacing:0">여기에 더해집니다</div>
+        <div class="eyebrow ko">여기에 더해집니다</div>
         <ul class="list">
           <li><span class="plus">+</span>지도교수 연구과제 인건비</li>
-          <li class="chk"><span class="plus">+</span>박사과정 등록금 전액 지원</li>
-          <li class="chk"><span class="plus">+</span>자대 학부 → 석사 진학 시 첫 학기 등록금 면제</li>
-          <li class="chk"><span class="plus">+</span>RISE 사업 지원</li>
+          <li><span class="plus">+</span>박사과정 등록금 전액 지원</li>
+          <li><span class="plus">+</span>자대 학부 → 석사 진학 시 첫 학기 등록금 면제</li>
+          <li><span class="plus">+</span>RISE 사업 지원</li>
         </ul>
-        <div class="fine">항목별 조건은 모집요강과 학과 안내를 따릅니다. 중복 수혜 규칙은 확정 전이라 합산 금액은 적지 않습니다.</div>
+        <div class="spacer"></div>
       </div>
     </section>
 
@@ -126,7 +182,7 @@
         <div class="modules"><div class="mod">기초 모듈</div><div class="mod">심화 모듈</div><div class="mod hot">특화 모듈</div></div>
         <ul class="list">
           <li><span class="dot"></span>재학 중 산학프로젝트 1개 이상, 기업 멘토와 함께</li>
-          <li class="chk"><span class="dot"></span>휴머노이드 · 협동로봇 등 실습 장비</li>
+          <li><span class="dot"></span>휴머노이드 · 협동로봇 등 실습 장비</li>
           <li><span class="dot"></span>해외 학회 · 해외 협력기관 파견 지원</li>
         </ul>
       </div>
@@ -146,6 +202,14 @@
           <div class="ind"><div class="n">3<small>개사</small></div><div class="t">항공우주 · 드론</div></div>
         </div>
         <div class="box"><div class="k">졸업까지 이어지는 연결</div><div class="v">산학장학생 · 인턴십 · 현장실습 · 채용설명회 · 1:1 진로상담</div></div>
+        <div class="spacer"></div>
+      </div>
+    </section>
+
+    <section class="card" aria-label="5. 참여 기업">
+      <div class="inner">
+        <div class="eyebrow">Consortium · 참여 기업</div>
+        <h2>함께하는 25개사</h2>
         <div class="logos">
           <div><img src="logos/C-01.png" alt="HD현대로보틱스"></div>
           <div><img src="logos/C-02.png" alt="LS메카피온(주)"></div>
@@ -173,26 +237,27 @@
           <div><img src="logos/C-24.png" alt="(주)티엑스알로보틱스"></div>
           <div><img src="logos/C-25.png" alt="(주)이노스페이스"></div>
         </div>
-        <div class="fine">컨소시엄 참여 기업 (가나다순 아님, 계획서 표 4.1 순)</div>
+        <div class="fine">컨소시엄 참여 기업 (계획서 표 4.1 순)</div>
       </div>
     </section>
 
-    <section class="card" aria-label="5. 일정과 문의">
+    <section class="card" aria-label="6. 일정과 문의">
       <div class="inner">
         <div class="eyebrow">Apply · 일정</div>
         <h2>지원 일정</h2>
         <div class="date"><div class="k">2차 모집</div><div class="v">2026. 11. 13 (금) – 11. 20 (금)</div></div>
         <div class="date soft"><div class="k">추가 모집</div><div class="v">2027. 1월 중 (예정)</div></div>
-        <div class="eyebrow" style="text-transform:none;letter-spacing:0">지원 전에</div>
+        <div class="eyebrow ko">지원 전에</div>
         <ol class="steps">
-          <li>기계공학부 홈페이지에서 교수진 연구 분야 확인 &nbsp;<a href="https://me.knu.ac.kr" target="_blank" rel="noopener">me.knu.ac.kr</a></li>
-          <li>관심 있는 교수님께 이메일로 연락</li>
-          <li>경북대학교 일반대학원 모집요강에 따라 원서 접수</li>
+          <li><span>기계공학부 홈페이지에서 교수진 연구 분야 확인 &nbsp;<a href="https://me.knu.ac.kr" target="_blank" rel="noopener">me.knu.ac.kr</a></span></li>
+          <li><span>관심 있는 교수님께 이메일로 연락</span></li>
+          <li><span>경북대학교 일반대학원 모집요강에 따라 원서 접수</span></li>
         </ol>
         <div class="box contact">
-          <div class="k">문의 <span class="chk" style="display:inline-flex;margin-left:6px"></span></div>
+          <div class="k">문의</div>
           전화 [학과 사무실 전화]<br>이메일 [학과 이메일]<br>홈페이지 <a href="https://me.knu.ac.kr" target="_blank" rel="noopener">me.knu.ac.kr</a>
         </div>
+        <div class="spacer"></div>
       </div>
     </section>
 
@@ -233,3 +298,5 @@
   paint();
 })();
 </script>
+</body>
+</html>
