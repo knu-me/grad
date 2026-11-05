@@ -34,8 +34,10 @@
   .tiles { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
   .tile { background: var(--panel); border-radius: 10px; padding: 12px 14px; }
   .tile .k { font-size: 12px; color: var(--muted); }
-  .tile .v { font-size: 22px; font-weight: 900; margin-top: 2px; }
-  .tile .n { font-size: 11px; color: var(--dim); margin-top: 6px; }
+  .tile .v { font-size: 22px; font-weight: 900; margin-top: 2px; line-height: 1.2; }
+  .tile .row { display: flex; align-items: center; gap: 10px; }
+  .tile .n { font-size: 22px; font-weight: 900; line-height: 1.2; }
+  .tile .alpha { font-size: 34px; font-weight: 900; color: var(--accent); line-height: 1; }
   .list { display: flex; flex-direction: column; gap: 10px; margin: 0; padding: 0; list-style: none; }
   .list li { display: flex; align-items: center; gap: 12px; font-size: 16px; }
   .plus { flex: 0 0 28px; width: 28px; height: 28px; border-radius: 50%; background: var(--accent); display: grid; place-items: center; font-weight: 900; }
@@ -63,6 +65,9 @@
   .steps a, .contact a { color: var(--fg); }
   .contact { font-size: 14px; line-height: 1.7; }
   .contact .k { color: var(--accent); font-weight: 700; font-size: 12px; }
+  .logos { display: grid; grid-template-columns: repeat(4, 1fr); gap: 6px; }
+  .logos div { background: #fff; border-radius: 6px; aspect-ratio: 5 / 3; display: grid; place-items: center; padding: 6px; min-width: 0; }
+  .logos img { max-width: 100%; max-height: 100%; object-fit: contain; }
   .fine { font-size: 11px; color: var(--dim); margin-top: auto; }
   .nav { flex: 0 0 auto; display: flex; align-items: center; justify-content: center; gap: 14px;
     padding-block: 10px; padding-left: max(16px, env(safe-area-inset-left, 0px)); padding-right: max(16px, env(safe-area-inset-right, 0px)); }
@@ -99,8 +104,8 @@
         <div class="eyebrow">Scholarship · 장학</div>
         <h2>입학생 전원 장학생</h2>
         <div class="tiles">
-          <div class="tile"><div class="k">석사과정</div><div class="v">월 190만원 ↑</div><div class="n">기본 지급</div></div>
-          <div class="tile"><div class="k">박사과정</div><div class="v">월 210만원 ↑</div><div class="n">기본 지급</div></div>
+          <div class="tile"><div class="k">석사과정</div><div class="row"><div><div class="v">월 190만원</div><div class="n">기본 지급</div></div><div class="alpha">+α</div></div></div>
+          <div class="tile"><div class="k">박사과정</div><div class="row"><div><div class="v">월 210만원</div><div class="n">기본 지급</div></div><div class="alpha">+α</div></div></div>
         </div>
         <div class="eyebrow" style="text-transform:none;letter-spacing:0">여기에 더해집니다</div>
         <ul class="list">
@@ -141,7 +146,34 @@
           <div class="ind"><div class="n">3<small>개사</small></div><div class="t">항공우주 · 드론</div></div>
         </div>
         <div class="box"><div class="k">졸업까지 이어지는 연결</div><div class="v">산학장학생 · 인턴십 · 현장실습 · 채용설명회 · 1:1 진로상담</div></div>
-        <div class="fine">기업 로고 게시 여부는 각 기업 동의 후 결정</div>
+        <div class="logos">
+          <div><img src="logos/C-01.png" alt="HD현대로보틱스"></div>
+          <div><img src="logos/C-02.png" alt="LS메카피온(주)"></div>
+          <div><img src="logos/C-03.png" alt="평화발레오"></div>
+          <div><img src="logos/C-04.png" alt="에스엘(주)"></div>
+          <div><img src="logos/C-05.png" alt="삼익THK(주)"></div>
+          <div><img src="logos/C-06.png" alt="(주)대동"></div>
+          <div><img src="logos/C-07.png" alt="삼익정공(주)"></div>
+          <div><img src="logos/C-08.png" alt="(주)아진엑스텍"></div>
+          <div><img src="logos/C-09.png" alt="(주)세신정밀"></div>
+          <div><img src="logos/C-10.png" alt="아이엠로보틱스(주)"></div>
+          <div><img src="logos/C-11.png" alt="(주)유진엠에스"></div>
+          <div><img src="logos/C-12.png" alt="(주)에프엠웍스"></div>
+          <div><img src="logos/C-13.png" alt="(주)미라클솔루션"></div>
+          <div><img src="logos/C-14.png" alt="(주)에프알티로보틱스"></div>
+          <div><img src="logos/C-15.png" alt="(주)진양오일씰"></div>
+          <div><img src="logos/C-16.png" alt="(주)램플"></div>
+          <div><img src="logos/C-17.png" alt="Riibotics"></div>
+          <div><img src="logos/C-18.png" alt="(주)은일"></div>
+          <div><img src="logos/C-19.png" alt="세향산업(주)"></div>
+          <div><img src="logos/C-20.png" alt="(주)엔유씨전자"></div>
+          <div><img src="logos/C-21.png" alt="(주)에어스"></div>
+          <div><img src="logos/C-22.png" alt="옵티머스시스템(주)"></div>
+          <div><img src="logos/C-23.png" alt="한양이엔지(주)"></div>
+          <div><img src="logos/C-24.png" alt="(주)티엑스알로보틱스"></div>
+          <div><img src="logos/C-25.png" alt="(주)이노스페이스"></div>
+        </div>
+        <div class="fine">컨소시엄 참여 기업 (가나다순 아님, 계획서 표 4.1 순)</div>
       </div>
     </section>
 
