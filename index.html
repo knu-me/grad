@@ -37,7 +37,7 @@
   .eyebrow { font-size: 11px; font-weight: 700; letter-spacing: .12em; color: var(--accent); text-transform: uppercase; }
   .eyebrow.ko { text-transform: none; letter-spacing: 0; }
   h1, h2 { margin: 0; text-wrap: balance; line-height: 1.12; font-weight: 900; }
-  h1 { font-size: clamp(34px, 10.5vw, 48px); }
+  h1 { font-size: clamp(31px, 9.6vw, 44px); }
   h2 { font-size: clamp(24px, 7.2vw, 32px); }
   .sub { color: var(--muted); font-size: 13px; }
   .fine { font-size: 11px; color: var(--dim); }
@@ -47,6 +47,9 @@
   /* 사진은 자르지 않고 전체를 보인다. 사진 배경(#0a0a0c)이 페이지 배경과 같아 경계가 보이지 않는다 */
   .img img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: contain; }
   .img:has(img) { background: var(--bg); border: 0; border-radius: 0; }
+  /* 표지 기관 로고: 흰 글자 버전(검정 배경용) */
+  .orgs { display: flex; align-items: center; gap: 20px; }
+  .orgs img { height: 26px; width: auto; }
   .big { font-size: clamp(20px, 6vw, 26px); font-weight: 900; line-height: 1.2; }
   .lead { font-size: 15px; line-height: 1.45; }
   .tiles { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; }
@@ -103,7 +106,7 @@
   /* 낮은 화면(구형 폰, 브라우저 UI가 큰 경우): 간격과 글자를 한 단계 줄인다 */
   @media (max-height: 700px) {
     :root { --gap: 9px; }
-    h1 { font-size: clamp(30px, 9vw, 40px); }
+    h1 { font-size: clamp(28px, 8.4vw, 36px); }
     h2 { font-size: clamp(21px, 6.4vw, 27px); }
     .list li, .lead { font-size: 14px; }
     .list { gap: 6px; }
@@ -135,6 +138,7 @@
     .mod { padding: 12px 4px; font-size: 15px; }
     .sub { font-size: 14px; }
     .logos { gap: 8px; }
+    .orgs img { height: 30px; }
   }
   /* 넓은 화면(PC)에서는 폰 폭으로 가운데 표시 */
   @media (min-width: 600px) {
@@ -154,12 +158,13 @@
 
     <section class="card" aria-label="1. 소개">
       <div class="inner">
-        <div class="eyebrow">첨단산업특성화대학원(로봇 분야) 선정&nbsp;· 기계로봇공학과</div>
-        <h1>로봇을<br>만드는 대학원</h1>
+        <div class="eyebrow">첨단산업특성화대학원(로봇 분야) 선정</div>
+        <h1>로봇을 만들고<br>활용하는<br>기계로봇공학과</h1>
         <div class="img" style="border:0"><img src="img/hero.jpg" alt="휴머노이드 로봇"></div>
         <div class="big">2027학년도 1학기 신입생 모집</div>
         <div class="lead">기계 및 로봇 관련 전공희망자<br><b>누구나 지원 가능</b></div>
         <div class="fine">구 기계공학과. 경북대학교 일반대학원 모집요강 기준</div>
+        <div class="orgs"><img src="img/logo_knu.png" alt="KNU 경북대학교"><img src="img/logo_motir.png" alt="산업통상부"></div>
       </div>
     </section>
 
