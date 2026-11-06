@@ -104,6 +104,16 @@
   .flow .st b { display: block; color: var(--fg); font-size: 13px; margin-bottom: 2px; }
   .flow .st.hot { background: var(--accent); color: var(--fg); }
   .flow .ar { color: var(--accent); font-weight: 900; font-size: 18px; align-self: center; }
+  /* 로드맵 카드: 석사(위)·박사(아래) 두 트랙. 두 판이 남는 높이를 나눠 갖는다 */
+  .trk { flex: 1 1 auto; min-height: 0; background: var(--panel); border-radius: 12px; padding: 10px 12px; display: flex; flex-direction: column; gap: 6px; }
+  .trk .th { display: flex; align-items: center; gap: 8px; font-size: 12.5px; color: var(--muted); font-weight: 700; }
+  .trk .tag { background: var(--accent); color: var(--fg); font-weight: 900; font-size: 14px; border-radius: 6px; padding: 2px 9px; }
+  .trk.phd .tag { background: var(--fg); color: var(--bg); }
+  .trk ol { flex: 1 1 auto; display: flex; flex-direction: column; justify-content: space-around; gap: 4px; margin: 0; padding: 0; list-style: none; }
+  .trk li { display: grid; grid-template-columns: 40px 1fr; gap: 6px; font-size: 13px; line-height: 1.35; color: var(--muted); }
+  .trk li b { color: var(--fg); font-weight: 900; }
+  .trk li.hot, .trk li.hot b { color: var(--fg); }
+  .trk li.hot b { color: var(--accent); }
   .spacer { flex: 1 1 0; }
   .nav { flex: 0 0 auto; display: flex; align-items: center; justify-content: center; gap: 12px;
     padding: 6px max(14px, env(safe-area-inset-right, 0px)) calc(6px + env(safe-area-inset-bottom, 0px)) max(14px, env(safe-area-inset-left, 0px)); }
@@ -128,6 +138,9 @@
     .box, .date { padding: 8px 12px; }
     .mod { padding: 8px 4px; font-size: 13px; }
     .flow .st { font-size: 11px; padding: 6px 4px; }
+    .trk { padding: 8px 10px; gap: 4px; }
+    .trk li { font-size: 12px; grid-template-columns: 36px 1fr; }
+    .trk .tag { font-size: 13px; }
     .flow .st b { font-size: 12px; }
     .bar { font-size: 11px; padding-top: calc(4px + env(safe-area-inset-top, 0px)); padding-bottom: 4px; }
     .arrow { width: 32px; height: 32px; }
@@ -150,6 +163,10 @@
     .sub { font-size: 14px; }
     .logos { gap: 8px; }
     .flow .st { font-size: 13px; padding: 10px 6px; }
+    .trk { padding: 12px 14px; gap: 8px; }
+    .trk li { font-size: 14.5px; grid-template-columns: 46px 1fr; }
+    .trk .th { font-size: 13.5px; }
+    .trk .tag { font-size: 15px; }
     .flow .st b { font-size: 14px; }
     .orgs img { height: 30px; }
   }
@@ -214,14 +231,26 @@
 
     <section class="card" aria-label="4. 로드맵">
       <div class="inner">
-        <div class="eyebrow">Roadmap&nbsp;· 입학부터 졸업까지</div>
-        <h2>시기별로<br>이렇게 준비한다</h2>
-        <ol class="path">
-          <li><b>1학기&nbsp;· 기초 모듈</b>제어&nbsp;· 생산&nbsp;· 열유체 어느 배경이든 내게 맞는 기초부터. 연구실과 관심 분야를 정한다</li>
-          <li><b>2학기&nbsp;· 심화 모듈</b>제어&nbsp;· 자율화&nbsp;· 센서&nbsp;· 비전&nbsp;· AI&nbsp;· 시스템 설계. 산학프로젝트 팀을 꾸린다</li>
-          <li><b>3학기&nbsp;· 특화 모듈 + 산학프로젝트</b>기업 멘토와 현장 과제를 푼다. 학술대회 발표</li>
-          <li class="hot"><b>4학기&nbsp;· 학위논문</b>성과교류회 시연, 인턴십 매칭&nbsp;· 채용설명회&nbsp;· 1:1 진로상담</li>
-        </ol>
+        <div class="eyebrow">Roadmap&nbsp;· 로드맵</div>
+        <h2>입학부터 졸업까지<br>이렇게 준비한다</h2>
+        <div class="trk">
+          <div class="th"><span class="tag">석사</span>2년&nbsp;· 현장 문제 해결력</div>
+          <ol>
+            <li><b>1학기</b><span>기초 모듈&nbsp;· 연구실과 관심 분야 정하기</span></li>
+            <li><b>2학기</b><span>심화 모듈&nbsp;· 산학프로젝트 팀 꾸리기</span></li>
+            <li><b>3학기</b><span>특화 모듈 + 산학프로젝트&nbsp;· 학술대회</span></li>
+            <li class="hot"><b>4학기</b><span>학위논문&nbsp;· 인턴십&nbsp;· 채용 연계</span></li>
+          </ol>
+        </div>
+        <div class="trk phd">
+          <div class="th"><span class="tag">박사</span>석박통합 포함&nbsp;· 핵심기술 + 리더십</div>
+          <ol>
+            <li><b>진입</b><span>심화·특화 모듈&nbsp;· 핵심기술 연구 주제 정하기</span></li>
+            <li><b>연구</b><span>산학프로젝트를 여러 학기 이어 가며 팀을 이끈다</span></li>
+            <li><b>확장</b><span>공동연구&nbsp;· 특허&nbsp;· 기술이전&nbsp;· 해외 연수</span></li>
+            <li class="hot"><b>학위</b><span>박사논문&nbsp;· 연구기관&nbsp;· 기업 연구소로</span></li>
+          </ol>
+        </div>
         <div class="box"><div class="k">졸업할 때 손에 남는 것</div><div class="v">논문 + 기업 문제를 로봇으로 푼 경험 = 포트폴리오</div></div>
       </div>
     </section>
