@@ -125,6 +125,9 @@
   .fld .fi b { color: var(--accent); font-weight: 700; margin-right: 6px; }
   .cta { display: flex; justify-content: center; align-items: center; gap: 8px; background: var(--fg); color: var(--bg); border-radius: 999px; padding: 10px 16px; font-size: 15px; font-weight: 900; text-decoration: none; }
   .cta span { font-size: 18px; line-height: 1; }
+  .cta.sm { display: inline-flex; margin-top: 6px; padding: 6px 14px; font-size: 13px; }
+  .cta.sm span { font-size: 15px; }
+  .steps li > span > .cta.sm { display: flex; width: fit-content; color: var(--bg); text-decoration: none; }
   /* 교수 목록: 이름 | 연구실 + 키워드. 행이 남는 높이에 고르게 퍼진다 */
   .profs { flex: 1 1 auto; min-height: 0; display: flex; flex-direction: column; justify-content: space-between; margin: 0; padding: 0; list-style: none; }
   .profs li { flex: 1 1 auto; display: flex; align-items: center; border-top: 1px solid var(--panel2); }
@@ -436,7 +439,7 @@
         <div class="date soft"><div class="k">추가 모집</div><div class="v">2027. 1월 중 (예정)</div></div>
         <div class="eyebrow ko">지원 전에</div>
         <ol class="steps">
-          <li><span>기계공학부 홈페이지에서 교수진 연구 분야 확인 <a href="https://me.knu.ac.kr" target="_blank" rel="noopener">me.knu.ac.kr</a></span></li>
+          <li><span>기계공학부 홈페이지에서 교수진 연구 분야 확인<a class="cta sm" href="https://home.knu.ac.kr/HOME/me/sub.htm?nav_code=me1623636445" target="_blank" rel="noopener">교수진 보기<span aria-hidden="true">›</span></a></span></li>
           <li><span>관심 있는 교수님께 이메일로 연락</span></li>
           <li><span>경북대학교 일반대학원 모집요강에 따라 원서 접수</span></li>
         </ol>
