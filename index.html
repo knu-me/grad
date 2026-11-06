@@ -120,6 +120,10 @@
   .fld .fn { display: flex; justify-content: space-between; align-items: baseline; gap: 8px; font-size: 17px; font-weight: 900; }
   .fld .fn span { font-size: 12px; color: var(--accent); font-weight: 700; white-space: nowrap; }
   .fld .fd { font-size: 13px; line-height: 1.4; color: var(--muted); }
+  .fld .fi { font-size: 12px; line-height: 1.4; color: var(--fg); }
+  .fld .fi b { color: var(--accent); font-weight: 700; margin-right: 6px; }
+  .cta { display: flex; justify-content: center; align-items: center; gap: 8px; background: var(--fg); color: var(--bg); border-radius: 999px; padding: 10px 16px; font-size: 15px; font-weight: 900; text-decoration: none; }
+  .cta span { font-size: 18px; line-height: 1; }
   /* 교수 목록: 이름 | 연구실 + 키워드. 행이 남는 높이에 고르게 퍼진다 */
   .profs { flex: 1 1 auto; min-height: 0; display: flex; flex-direction: column; justify-content: space-between; margin: 0; padding: 0; list-style: none; }
   .profs li { flex: 1 1 auto; display: flex; align-items: center; border-top: 1px solid var(--panel2); }
@@ -160,6 +164,10 @@
     .fld { padding: 8px 12px; }
     .fld .fn { font-size: 16px; }
     .fld .fd { font-size: 12px; }
+    .fld .fi { font-size: 11.5px; }
+    .fld { gap: 3px; }
+    .lead { font-size: 13.5px; }
+    .cta { padding: 8px 14px; font-size: 14px; }
     .profs a, .profs .nolink { grid-template-columns: 32px 1fr 8px; gap: 8px; padding: 2px 0; }
     .profs .ph { width: 32px; height: 32px; }
     .profs .t1 b { font-size: 14px; }
@@ -193,6 +201,8 @@
     .fld { padding: 14px 16px; }
     .fld .fn { font-size: 19px; }
     .fld .fd { font-size: 14.5px; }
+    .fld .fi { font-size: 13.5px; }
+    .cta { padding: 13px 18px; font-size: 16px; }
     .profs a, .profs .nolink { grid-template-columns: 48px 1fr 10px; gap: 12px; }
     .profs .ph { width: 48px; height: 48px; }
     .profs .t1 b { font-size: 16px; }
@@ -252,11 +262,11 @@
         <h2>기계공학 어느 분야든<br>로봇 기술을 더한다</h2>
         <div class="lead">로봇만 하는 곳이 아닙니다.<br><b>로봇 기술을 갖춘 기계공학 전문가</b>를 키웁니다</div>
         <div class="flds">
-          <div class="fld"><div class="fn">제어 및 동역학<span>교수 9명</span></div><div class="fd">휴머노이드&nbsp;· 자율주행&nbsp;· 드론&nbsp;· 엑츄에이터&nbsp;· 피지컬 AI&nbsp;· 로봇 설계·제어&nbsp;· 진동 및 초음파 센서 등</div></div>
-          <div class="fld"><div class="fn">설계 및 생산<span>교수 7명</span></div><div class="fd">정밀 가공&nbsp;· 스마트 제조&nbsp;· 마이크로 나노 센서&nbsp;· 재료 역학&nbsp;· 구조 해석&nbsp;· 첨단 소재 및 내구성 평가 등</div></div>
-          <div class="fld"><div class="fn">열유체 및 에너지<span>교수 9명</span></div><div class="fd">에너지 변환&nbsp;· 원자력 및 친환경 에너지&nbsp;· 열관리 및 냉각 시스템&nbsp;· 항공우주 추진 기술 등</div></div>
+          <div class="fld"><div class="fn">제어 및 동역학<span>교수 9명</span></div><div class="fd">휴머노이드·지능형 로봇&nbsp;· 자율주행·UAM 등 미래 모빌리티&nbsp;· 드론&nbsp;· 액추에이터&nbsp;· 피지컬 AI&nbsp;· 로봇 설계·제어&nbsp;· 진동 및 초음파 센서&nbsp;등</div><div class="fi"><b>관련 업계</b>현대자동차&nbsp;· 현대모비스&nbsp;· 삼성전자&nbsp;· LG전자&nbsp;· 두산로보틱스&nbsp;등</div></div>
+          <div class="fld"><div class="fn">설계 및 생산<span>교수 7명</span></div><div class="fd">정밀 가공&nbsp;· 스마트 제조&nbsp;· 자동화 및 품질 관리&nbsp;· 재료 역학&nbsp;· 구조 해석&nbsp;· 첨단 소재 및 내구성 평가&nbsp;· 마이크로 나노 센서&nbsp;등</div><div class="fi"><b>관련 업계</b>현대자동차&nbsp;· 삼성전자&nbsp;· SK하이닉스&nbsp;· LG전자&nbsp;· 포스코&nbsp;· 현대제철&nbsp;· 세아베스틸&nbsp;· 현대중공업&nbsp;등</div></div>
+          <div class="fld"><div class="fn">열유체 및 에너지<span>교수 9명</span></div><div class="fd">에너지 변환&nbsp;· 원자력 및 친환경 에너지&nbsp;· 연소&nbsp;· 열관리 및 냉각 시스템&nbsp;· 공기역학·유동 해석&nbsp;· 항공우주 추진 기술&nbsp;등</div><div class="fi"><b>관련 업계</b>한국전력공사&nbsp;· 한국수력원자력&nbsp;· 두산에너빌리티&nbsp;· LG에너지솔루션&nbsp;· SK온&nbsp;· 대한항공&nbsp;· KAI&nbsp;· 한화에어로스페이스&nbsp;등</div></div>
         </div>
-        <div class="fine">분야별 교수님과 연구실은 다음 3장</div>
+        <a class="cta" href="https://knu-me.github.io/overview/prof/prof-main" target="_blank" rel="noopener">교수진 한눈에 보기<span aria-hidden="true">›</span></a>
       </div>
     </section>
 
