@@ -124,7 +124,7 @@
   .profs { flex: 1 1 auto; min-height: 0; display: flex; flex-direction: column; justify-content: space-between; margin: 0; padding: 0; list-style: none; }
   .profs li { flex: 1 1 auto; display: flex; align-items: center; border-top: 1px solid var(--panel2); }
   .profs li:first-child { border-top: 0; }
-  .profs a { flex: 1 1 auto; display: grid; grid-template-columns: 38px 1fr 10px; gap: 10px; align-items: center; padding: 3px 0; color: inherit; text-decoration: none; }
+  .profs a, .profs .nolink { flex: 1 1 auto; display: grid; grid-template-columns: 38px 1fr 10px; gap: 10px; align-items: center; padding: 3px 0; color: inherit; text-decoration: none; }
   .profs .ph { width: 38px; height: 38px; border-radius: 50%; object-fit: cover; background: var(--panel2); }
   .profs .t1 { display: block; font-size: 12px; font-weight: 700; line-height: 1.3; }
   .profs .t1 b { font-size: 15px; font-weight: 900; margin-right: 6px; }
@@ -160,7 +160,7 @@
     .fld { padding: 8px 12px; }
     .fld .fn { font-size: 16px; }
     .fld .fd { font-size: 12px; }
-    .profs a { grid-template-columns: 32px 1fr 8px; gap: 8px; padding: 2px 0; }
+    .profs a, .profs .nolink { grid-template-columns: 32px 1fr 8px; gap: 8px; padding: 2px 0; }
     .profs .ph { width: 32px; height: 32px; }
     .profs .t1 b { font-size: 14px; }
     .profs .t1, .profs .t2 { font-size: 11.5px; }
@@ -193,7 +193,7 @@
     .fld { padding: 14px 16px; }
     .fld .fn { font-size: 19px; }
     .fld .fd { font-size: 14.5px; }
-    .profs a { grid-template-columns: 48px 1fr 10px; gap: 12px; }
+    .profs a, .profs .nolink { grid-template-columns: 48px 1fr 10px; gap: 12px; }
     .profs .ph { width: 48px; height: 48px; }
     .profs .t1 b { font-size: 16px; }
     .profs .t1 { font-size: 13.5px; }
@@ -265,15 +265,15 @@
         <div class="eyebrow">Research 1/3&nbsp;· 교수와 연구실</div>
         <h2>제어 및 동역학</h2>
         <ul class="profs">
-          <li><a href="https://knu-me.github.io/overview/prof/prof-main" target="_blank" rel="noopener"><img class="ph" src="img/prof/kang-namcheol.jpg" alt="강남철 교수" loading="lazy"><span class="tx"><span class="t1"><b>강남철</b>기계역학 및 인체동역학 연구실</span><span class="t2">동역학·진동·소음&nbsp;· AI 생체신호 분석</span></span><span class="go" aria-hidden="true">›</span></a></li>
-          <li><a href="https://sites.google.com/view/vibroacoustics-meta-lab/home" target="_blank" rel="noopener"><img class="ph" src="img/prof/kim-jinwook.jpg" alt="김진욱 교수" loading="lazy"><span class="tx"><span class="t1"><b>김진욱</b>진동음향 메타구조 연구실</span><span class="t2">초음파 장비&nbsp;· 진동음향 센서</span></span><span class="go" aria-hidden="true">›</span></a></li>
-          <li><a href="https://home.knu.ac.kr/HOME/avl/index.htm" target="_blank" rel="noopener"><img class="ph" src="img/prof/roh-yongrae.jpg" alt="노용래 교수" loading="lazy"><span class="tx"><span class="t1"><b>노용래</b>음향·진동공학 연구실</span><span class="t2">초음파 트랜스듀서&nbsp;· 센서·액추에이터</span></span><span class="go" aria-hidden="true">›</span></a></li>
+          <li><div class="nolink"><img class="ph" src="img/prof/kang-namcheol.jpg" alt="강남철 교수" loading="lazy"><span class="tx"><span class="t1"><b>강남철</b>기계역학 및 인체동역학 연구실</span><span class="t2">동역학·진동·소음&nbsp;· AI 생체신호 분석</span></span><span class="go"></span></div></li>
+          <li><a href="https://sites.google.com/view/jinwook-kim-knu/vams-lab" target="_blank" rel="noopener"><img class="ph" src="img/prof/kim-jinwook.jpg" alt="김진욱 교수" loading="lazy"><span class="tx"><span class="t1"><b>김진욱</b>진동음향 메타구조 연구실</span><span class="t2">초음파 장비&nbsp;· 진동음향 센서</span></span><span class="go" aria-hidden="true">›</span></a></li>
+          <li><a href="https://home.knu.ac.kr/HOME/avl/" target="_blank" rel="noopener"><img class="ph" src="img/prof/roh-yongrae.jpg" alt="노용래 교수" loading="lazy"><span class="tx"><span class="t1"><b>노용래</b>음향·진동공학 연구실</span><span class="t2">초음파 트랜스듀서&nbsp;· 센서·액추에이터</span></span><span class="go" aria-hidden="true">›</span></a></li>
           <li><a href="https://romalab.org/" target="_blank" rel="noopener"><img class="ph" src="img/prof/shin-youngsik.jpg" alt="신영식 교수" loading="lazy"><span class="tx"><span class="t1"><b>신영식</b>AI 로봇 모빌리티 연구실</span><span class="t2">SLAM&nbsp;· 자율주행&nbsp;· AI 로보틱스</span></span><span class="go" aria-hidden="true">›</span></a></li>
           <li><a href="https://sites.google.com/view/biorobot" target="_blank" rel="noopener"><img class="ph" src="img/prof/oh-keonyoung.jpg" alt="오건영 교수" loading="lazy"><span class="tx"><span class="t1"><b>오건영</b>바이오로보틱스 연구실</span><span class="t2">외골격·재활·햅틱 로봇&nbsp;· 웨어러블 센서</span></span><span class="go" aria-hidden="true">›</span></a></li>
           <li><a href="https://imaclab.org/" target="_blank" rel="noopener"><img class="ph" src="img/prof/lee-sangheon.jpg" alt="이상헌 교수" loading="lazy"><span class="tx"><span class="t1"><b>이상헌</b>지능형 메카트로닉스 및 제어 연구실</span><span class="t2">모터&nbsp;· 모빌리티&nbsp;· 로봇 시스템 설계 및 제어</span></span><span class="go" aria-hidden="true">›</span></a></li>
           <li><a href="https://yihak0442.wixsite.com/robot" target="_blank" rel="noopener"><img class="ph" src="img/prof/yi-hak.jpg" alt="이학 교수" loading="lazy"><span class="tx"><span class="t1"><b>이학</b>필드로봇 연구실</span><span class="t2">피지컬 AI&nbsp;· 보행 로봇&nbsp;· 인간-로봇 협업</span></span><span class="go" aria-hidden="true">›</span></a></li>
-          <li><a href="https://knusoftrobotics.notion.site/KNU-Soft-Robotics-Lab-8adc7853feff4db99c51bcc9ab5bcce8" target="_blank" rel="noopener"><img class="ph" src="img/prof/choi-sumin.jpg" alt="최수민 교수" loading="lazy"><span class="tx"><span class="t1"><b>최수민</b>소프트 로봇 연구실</span><span class="t2">소프트 그리퍼·핸드&nbsp;· 모바일·가사 로봇</span></span><span class="go" aria-hidden="true">›</span></a></li>
-          <li><a href="https://knu-me.github.io/overview/prof/prof-main" target="_blank" rel="noopener"><img class="ph" src="img/prof/hwang-changsoon.jpg" alt="황창순 교수" loading="lazy"><span class="tx"><span class="t1"><b>황창순</b>로봇시스템 연구실</span><span class="t2">로봇 손&nbsp;· 스케이트·하이브리드 이동 로봇</span></span><span class="go" aria-hidden="true">›</span></a></li>
+          <li><a href="https://knusoftrobotics.notion.site/knusoftrobotics/KNU-Soft-Robotics-Lab-8adc7853feff4db99c51bcc9ab5bcce8" target="_blank" rel="noopener"><img class="ph" src="img/prof/choi-sumin.jpg" alt="최수민 교수" loading="lazy"><span class="tx"><span class="t1"><b>최수민</b>소프트 로봇 연구실</span><span class="t2">소프트 그리퍼·핸드&nbsp;· 모바일·가사 로봇</span></span><span class="go" aria-hidden="true">›</span></a></li>
+          <li><div class="nolink"><img class="ph" src="img/prof/hwang-changsoon.jpg" alt="황창순 교수" loading="lazy"><span class="tx"><span class="t1"><b>황창순</b>로봇시스템 연구실</span><span class="t2">로봇 손&nbsp;· 스케이트·하이브리드 이동 로봇</span></span><span class="go"></span></div></li>
         </ul>
         <div class="fine">누르면 연구실 홈페이지로&nbsp;· 관심 연구실 교수님께 이메일로 연락</div>
       </div>
@@ -284,7 +284,7 @@
         <div class="eyebrow">Research 2/3&nbsp;· 교수와 연구실</div>
         <h2>설계 및 생산</h2>
         <ul class="profs">
-          <li><a href="https://sites.google.com/view/kwakslab/" target="_blank" rel="noopener"><img class="ph" src="img/prof/kwak-moonkyu.jpg" alt="곽문규 교수" loading="lazy"><span class="tx"><span class="t1"><b>곽문규</b>멀티스케일 구조 시스템 연구실</span><span class="t2">생체모방 마이크로·나노 표면&nbsp;· 양산 기술</span></span><span class="go" aria-hidden="true">›</span></a></li>
+          <li><a href="https://kwakslab.knu.ac.kr/" target="_blank" rel="noopener"><img class="ph" src="img/prof/kwak-moonkyu.jpg" alt="곽문규 교수" loading="lazy"><span class="tx"><span class="t1"><b>곽문규</b>멀티스케일 구조 시스템 연구실</span><span class="t2">생체모방 마이크로·나노 표면&nbsp;· 양산 기술</span></span><span class="go" aria-hidden="true">›</span></a></li>
           <li><a href="https://msne.knu.ac.kr/" target="_blank" rel="noopener"><img class="ph" src="img/prof/kim-gyuman.jpg" alt="김규만 교수" loading="lazy"><span class="tx"><span class="t1"><b>김규만</b>마이크로 시스템 & 나노엔지니어링 연구실</span><span class="t2">마이크로·나노 정밀가공&nbsp;· AI 공정 모니터링</span></span><span class="go" aria-hidden="true">›</span></a></li>
           <li><a href="https://sites.google.com/view/sykimlab" target="_blank" rel="noopener"><img class="ph" src="img/prof/kim-sungyeol.jpg" alt="김성열 교수" loading="lazy"><span class="tx"><span class="t1"><b>김성열</b>기능성 재료 역학 및 전기화학 연구실</span><span class="t2">에너지 소재&nbsp;· 극한환경 구조&nbsp;· 피로파괴</span></span><span class="go" aria-hidden="true">›</span></a></li>
           <li><a href="https://sites.google.com/view/immslab/home" target="_blank" rel="noopener"><img class="ph" src="img/prof/yang-seunghan.jpg" alt="양승한 교수" loading="lazy"><span class="tx"><span class="t1"><b>양승한</b>지능생산시스템 연구실</span><span class="t2">초정밀 생산시스템&nbsp;· 다축 이송계&nbsp;· 다자유도 로봇</span></span><span class="go" aria-hidden="true">›</span></a></li>
@@ -301,12 +301,12 @@
         <div class="eyebrow">Research 3/3&nbsp;· 교수와 연구실</div>
         <h2>열유체 및 에너지</h2>
         <ul class="profs">
-          <li><a href="https://knu-me.github.io/overview/prof/prof-main" target="_blank" rel="noopener"><img class="ph" src="img/prof/kim-sanghoon.jpg" alt="김상훈 교수" loading="lazy"><span class="tx"><span class="t1"><b>김상훈</b>고속비행체 공기역학 연구실</span><span class="t2">극초음속·희박기체&nbsp;· 위성·발사체 유동</span></span><span class="go" aria-hidden="true">›</span></a></li>
-          <li><a href="https://sites.google.com/view/ceelnam/home" target="_blank" rel="noopener"><img class="ph" src="img/prof/nam-hyungseok.jpg" alt="남형석 교수" loading="lazy"><span class="tx"><span class="t1"><b>남형석</b>에너지변환 및 열시스템 연구실</span><span class="t2">폐기물 에너지화&nbsp;· CO₂ 포집·활용&nbsp;· 공조</span></span><span class="go" aria-hidden="true">›</span></a></li>
+          <li><a href="https://hivaknu.com/" target="_blank" rel="noopener"><img class="ph" src="img/prof/kim-sanghoon.jpg" alt="김상훈 교수" loading="lazy"><span class="tx"><span class="t1"><b>김상훈</b>고속비행체 공기역학 연구실</span><span class="t2">극초음속·희박기체&nbsp;· 위성·발사체 유동</span></span><span class="go" aria-hidden="true">›</span></a></li>
+          <li><a href="https://sites.google.com/view/knuects/" target="_blank" rel="noopener"><img class="ph" src="img/prof/nam-hyungseok.jpg" alt="남형석 교수" loading="lazy"><span class="tx"><span class="t1"><b>남형석</b>에너지변환 및 열시스템 연구실</span><span class="t2">폐기물 에너지화&nbsp;· CO₂ 포집·활용&nbsp;· 공조</span></span><span class="go" aria-hidden="true">›</span></a></li>
           <li><a href="https://sites.google.com/view/ahtlknu/home" target="_blank" rel="noopener"><img class="ph" src="img/prof/park-ilseok.jpg" alt="박일석 교수" loading="lazy"><span class="tx"><span class="t1"><b>박일석</b>응용열전달연구실</span><span class="t2">다상유동·상변화 열전달&nbsp;· 모터 냉각</span></span><span class="go" aria-hidden="true">›</span></a></li>
           <li><a href="https://sites.google.com/site/knubefelab" target="_blank" rel="noopener"><img class="ph" src="img/prof/park-cheolwoo.jpg" alt="박철우 교수" loading="lazy"><span class="tx"><span class="t1"><b>박철우</b>바이오실험유체공학 연구실</span><span class="t2">바이오유체&nbsp;· 열유동 해석&nbsp;· 나노입자 열전달</span></span><span class="go" aria-hidden="true">›</span></a></li>
           <li><a href="https://home.knu.ac.kr/HOME/turb/" target="_blank" rel="noopener"><img class="ph" src="img/prof/park-taeseon.jpg" alt="박태선 교수" loading="lazy"><span class="tx"><span class="t1"><b>박태선</b>난류 열전달 및 연소 연구실</span><span class="t2">액체로켓엔진&nbsp;· 난류 유동·열전달</span></span><span class="go" aria-hidden="true">›</span></a></li>
-          <li><a href="https://knu-me.github.io/overview/prof/prof-main" target="_blank" rel="noopener"><img class="ph" src="img/prof/lee-jungpyo.jpg" alt="이정표 교수" loading="lazy"><span class="tx"><span class="t1"><b>이정표</b>항공우주 추진 및 연소 연구실</span><span class="t2">로켓추진&nbsp;· 데토네이션 엔진&nbsp;· 연소불안정</span></span><span class="go" aria-hidden="true">›</span></a></li>
+          <li><a href="https://sites.google.com/view/knu-apcl/home" target="_blank" rel="noopener"><img class="ph" src="img/prof/lee-jungpyo.jpg" alt="이정표 교수" loading="lazy"><span class="tx"><span class="t1"><b>이정표</b>항공우주 추진 및 연소 연구실</span><span class="t2">로켓추진&nbsp;· 데토네이션 엔진&nbsp;· 연소불안정</span></span><span class="go" aria-hidden="true">›</span></a></li>
           <li><a href="https://daeseongjo.wixsite.com/mtfl" target="_blank" rel="noopener"><img class="ph" src="img/prof/jo-daeseong.jpg" alt="조대성 교수" loading="lazy"><span class="tx"><span class="t1"><b>조대성</b>다상열유체 연구실</span><span class="t2">비등·임계열속&nbsp;· 원자로 열적 안정성</span></span><span class="go" aria-hidden="true">›</span></a></li>
           <li><a href="https://mlfm.knu.ac.kr/" target="_blank" rel="noopener"><img class="ph" src="img/prof/choi-sangheon.jpg" alt="최상헌 교수" loading="lazy"><span class="tx"><span class="t1"><b>최상헌</b>기계학습 및 유체역학 연구실</span><span class="t2">물리 기반 AI&nbsp;· 배터리·유체·고체 연성 해석</span></span><span class="go" aria-hidden="true">›</span></a></li>
           <li><a href="https://jghong70.wixsite.com/knucel" target="_blank" rel="noopener"><img class="ph" src="img/prof/hong-jungkoo.jpg" alt="홍정구 교수" loading="lazy"><span class="tx"><span class="t1"><b>홍정구</b>연소공학 연구실</span><span class="t2">친환경 연소·에너지&nbsp;· 분무·인젝터</span></span><span class="go" aria-hidden="true">›</span></a></li>
