@@ -91,9 +91,19 @@
   .contact { font-size: 14px; line-height: 1.6; }
   .contact .k { color: var(--accent); font-weight: 700; font-size: 12px; }
   /* 로고 그리드: 5열, 남는 높이를 행으로 나눠 채운다 */
-  .logos { flex: 1 1 0; min-height: 0; display: grid; grid-template-columns: repeat(5, 1fr); align-content: center; gap: 6px; }
-  .logos div { background: #fff; border-radius: 6px; aspect-ratio: 4 / 3; display: grid; place-items: center; padding: 5px; min-width: 0; min-height: 0; overflow: hidden; }
-  .logos img { max-width: 100%; max-height: 100%; width: auto; height: auto; object-fit: contain; }
+  .logos { flex: 1 1 0; min-height: 0; display: grid; grid-template-columns: repeat(5, 1fr); grid-auto-rows: minmax(0, 1fr); align-content: stretch; gap: 6px; }
+  .logos div { background: #fff; border-radius: 6px; height: 100%; max-height: 56px; align-self: center; position: relative; min-width: 0; min-height: 0; overflow: hidden; }
+  .logos img { position: absolute; left: 6px; top: 5px; width: calc(100% - 12px); height: calc(100% - 10px); object-fit: contain; }
+  /* 진로 카드 로고: 4열, 가로로 긴 타일 */
+  .logos.c4 { grid-template-columns: repeat(4, 1fr); }
+  .logos.c4 div { max-height: 64px; }
+  .logos.c4 img { left: 8px; width: calc(100% - 16px); }
+  /* 산학프로젝트 구조: 3단계 가로 흐름 */
+  .flow { display: grid; grid-template-columns: 1fr auto 1fr auto 1fr; align-items: stretch; gap: 3px; }
+  .flow .st { background: var(--panel); border-radius: 10px; padding: 8px 5px; text-align: center; font-size: 12px; line-height: 1.3; color: var(--muted); }
+  .flow .st b { display: block; color: var(--fg); font-size: 13px; margin-bottom: 2px; }
+  .flow .st.hot { background: var(--accent); color: var(--fg); }
+  .flow .ar { color: var(--accent); font-weight: 900; font-size: 18px; align-self: center; }
   .spacer { flex: 1 1 0; }
   .nav { flex: 0 0 auto; display: flex; align-items: center; justify-content: center; gap: 12px;
     padding: 6px max(14px, env(safe-area-inset-right, 0px)) calc(6px + env(safe-area-inset-bottom, 0px)) max(14px, env(safe-area-inset-left, 0px)); }
@@ -117,6 +127,8 @@
     .path li b { font-size: 14px; }
     .box, .date { padding: 8px 12px; }
     .mod { padding: 8px 4px; font-size: 13px; }
+    .flow .st { font-size: 11px; padding: 6px 4px; }
+    .flow .st b { font-size: 12px; }
     .bar { font-size: 11px; padding-top: calc(4px + env(safe-area-inset-top, 0px)); padding-bottom: 4px; }
     .arrow { width: 32px; height: 32px; }
   }
@@ -137,6 +149,8 @@
     .mod { padding: 12px 4px; font-size: 15px; }
     .sub { font-size: 14px; }
     .logos { gap: 8px; }
+    .flow .st { font-size: 13px; padding: 10px 6px; }
+    .flow .st b { font-size: 14px; }
     .orgs img { height: 30px; }
   }
   /* 넓은 화면(PC)에서는 폰 폭으로 가운데 표시 */
@@ -198,26 +212,30 @@
       </div>
     </section>
 
-    <section class="card" aria-label="4. 진로">
+    <section class="card" aria-label="4. 로드맵">
       <div class="inner">
-        <div class="eyebrow">Career&nbsp;· 진로</div>
-        <h2>프로젝트로 경력을 쌓고<br>진로는 <span style="color:var(--accent)">내가 정한다</span></h2>
+        <div class="eyebrow">Roadmap&nbsp;· 입학부터 졸업까지</div>
+        <h2>시기별로<br>이렇게 준비한다</h2>
         <ol class="path">
-          <li><b>입학</b>제어·생산·열유체 어느 관심 분야든. 기초 모듈을 내 배경에 맞춰 골라 듣는다</li>
-          <li><b>핵심기술</b>심화 모듈: 제어&nbsp;· 자율화&nbsp;· 센서&nbsp;· 비전&nbsp;· AI&nbsp;· 시스템 설계</li>
-          <li><b>기업 과제</b>특화 모듈 + 산학프로젝트. 3~5명 팀에 지도교수와 기업 멘토가 붙고, 학위논문으로 이어진다</li>
-          <li><b>결과물</b>논문&nbsp;· 특허&nbsp;· 학술대회&nbsp;· 성과교류회 시연, 해외 학회&nbsp;· 해외 파견</li>
-          <li class="hot"><b>원하는 곳으로</b>인턴십 매칭&nbsp;· 채용설명회&nbsp;· 1:1 진로상담&nbsp;· 창업 프로그램이 뒤를 받친다</li>
+          <li><b>1학기&nbsp;· 기초 모듈</b>제어&nbsp;· 생산&nbsp;· 열유체 어느 배경이든 내게 맞는 기초부터. 연구실과 관심 분야를 정한다</li>
+          <li><b>2학기&nbsp;· 심화 모듈</b>제어&nbsp;· 자율화&nbsp;· 센서&nbsp;· 비전&nbsp;· AI&nbsp;· 시스템 설계. 산학프로젝트 팀을 꾸린다</li>
+          <li><b>3학기&nbsp;· 특화 모듈 + 산학프로젝트</b>기업 멘토와 현장 과제를 푼다. 학술대회 발표</li>
+          <li class="hot"><b>4학기&nbsp;· 학위논문</b>성과교류회 시연, 인턴십 매칭&nbsp;· 채용설명회&nbsp;· 1:1 진로상담</li>
         </ol>
-        <div class="box"><div class="k">졸업 후 진로 분야</div><div class="v">로봇 및 자동화&nbsp;· 스마트제조&nbsp;· 모빌리티&nbsp;· 방산 등<br>기계 및 로봇 관련 기업 및 연구기관&nbsp;· 박사 진학&nbsp;· 창업</div></div>
-        <div class="fine">산학프로젝트 파트너 25개사는 다음 카드</div>
+        <div class="box"><div class="k">졸업할 때 손에 남는 것</div><div class="v">논문 + 기업 문제를 로봇으로 푼 경험 = 포트폴리오</div></div>
       </div>
     </section>
 
-    <section class="card" aria-label="5. 참여 기업">
+    <section class="card" aria-label="5. 산학프로젝트">
       <div class="inner">
-        <div class="eyebrow">Consortium&nbsp;· 참여 기업</div>
-        <h2>함께하는 25개사</h2>
+        <div class="eyebrow">Industry Project&nbsp;· 산학프로젝트</div>
+        <h2>기업의 진짜 문제를<br>로봇으로 푼다</h2>
+        <div class="flow">
+          <div class="st"><b>기업이 과제를 낸다</b>공정 개선&nbsp;· 시스템 통합&nbsp;· 현장 실증</div><div class="ar">›</div>
+          <div class="st hot"><b>한 학기, 팀으로</b>학생 3~5명 + 지도교수 + 기업 멘토</div><div class="ar">›</div>
+          <div class="st"><b>결과를 남긴다</b>학위논문&nbsp;· 특허&nbsp;· 현장 적용</div>
+        </div>
+        <div class="sub">재학 중 1개 이상, 한 학기 1인 1프로젝트. 과제 예: 자동차 부품 라인 로봇 셀 + 비전 검사&nbsp;· 수술 로봇 정밀 제어&nbsp;· 발사체 부품 조립 자동화</div>
         <div class="logos">
           <div><img src="logos/C-01.png" alt="HD현대로보틱스"></div>
           <div><img src="logos/C-02.png" alt="LS메카피온(주)"></div>
@@ -245,11 +263,46 @@
           <div><img src="logos/C-24.png" alt="(주)티엑스알로보틱스"></div>
           <div><img src="logos/C-25.png" alt="(주)이노스페이스"></div>
         </div>
-        <div class="fine">컨소시엄 참여 기업 (계획서 표 4.1 순)</div>
+        <div class="fine">과제를 내는 컨소시엄 25개사&nbsp;· 로봇을 만드는 기업과 로봇을 쓰는 기업</div>
       </div>
     </section>
 
-    <section class="card" aria-label="6. 일정과 문의">
+    <section class="card" aria-label="6. 진로">
+      <div class="inner">
+        <div class="eyebrow">Career&nbsp;· 진로</div>
+        <h2>포트폴리오를 들고<br><span style="color:var(--accent)">원하는 곳으로</span></h2>
+        <div class="box"><div class="k">졸업할 때 손에 남는 것</div><div class="v">논문&nbsp;· 특허&nbsp;· 학회 발표&nbsp;· 현장에서 돌아간 로봇</div></div>
+        <div class="eyebrow ko">기계공학 전공자가 가는 곳 (예)</div>
+        <div class="logos c4">
+          <div><img src="logos/career/hyundai_motor.png" alt="현대자동차"></div>
+          <div><img src="logos/career/hyundai_mobis.png" alt="현대모비스"></div>
+          <div><img src="logos/career/samsung.png" alt="삼성전자"></div>
+          <div><img src="logos/career/lg.png" alt="LG전자"></div>
+          <div><img src="logos/career/doosan.png" alt="두산(로보틱스·에너빌리티)"></div>
+          <div><img src="logos/career/hd_hhi.png" alt="HD현대"></div>
+          <div><img src="logos/career/kepco.png" alt="한국전력공사"></div>
+          <div><img src="logos/career/khnp.png" alt="한국수력원자력"></div>
+          <div><img src="logos/career/lg_energy.png" alt="LG에너지솔루션"></div>
+          <div><img src="logos/career/sk_on.png" alt="SK온"></div>
+          <div><img src="logos/career/korean_air.png" alt="대한항공"></div>
+          <div><img src="logos/career/kai.png" alt="한국항공우주산업"></div>
+          <div><img src="logos/career/hanwha_aero.png" alt="한화에어로스페이스"></div>
+          <div><img src="logos/career/posco.png" alt="포스코"></div>
+          <div><img src="logos/career/hyundai_steel.png" alt="현대제철"></div>
+          <div><img src="logos/career/seah.png" alt="세아"></div>
+          <div><img src="logos/career/sk_hynix.png" alt="SK하이닉스"></div>
+          <div><img src="logos/career/kimm.png" alt="한국기계연구원"></div>
+          <div><img src="logos/career/kist.png" alt="한국과학기술연구원"></div>
+          <div><img src="logos/career/kaeri.png" alt="한국원자력연구원"></div>
+          <div><img src="logos/career/kari.png" alt="한국항공우주연구원"></div>
+          <div><img src="logos/career/add.png" alt="국방과학연구소"></div>
+          <div><img src="logos/career/etri.png" alt="한국전자통신연구원"></div>
+        </div>
+        <div class="fine">로봇 및 자동화&nbsp;· 스마트제조&nbsp;· 모빌리티&nbsp;· 방산 등 기계 및 로봇 관련 기업 및 연구기관&nbsp;· 박사 진학&nbsp;· 창업</div>
+      </div>
+    </section>
+
+    <section class="card" aria-label="7. 일정과 문의">
       <div class="inner">
         <div class="eyebrow">Apply&nbsp;· 일정</div>
         <h2>지원 일정</h2>
